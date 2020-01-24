@@ -21,9 +21,9 @@ jimport('joomla.application.module.helper');
 $starttext =  $params->get('starttext');
 $endtext =  $params->get('endtext');
 $apiKey =  $params->get('apiKey');
+$passUID =  $params->get('passUID');
 
 $tokens = PassCreator::getTokens();
-$passUID = PassCreator::getPassUID($apiKey);
 $passFields = PassCreator::getPassFields($apiKey, $passUID);
 
 

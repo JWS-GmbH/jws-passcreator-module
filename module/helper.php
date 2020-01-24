@@ -5,6 +5,7 @@ defined('_JEXEC') or die;
 class PassCreator
 {
     
+    //call in default.php
     public static function submit($apiKey, $array, $passUID) {
             $input = array(
                 '5dc29d162176d1.51964649' => $array['5dc29d162176d1_51964649'],

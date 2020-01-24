@@ -54,10 +54,9 @@ defined('_JEXEC') or die;
     echo "Sie haben leider keinen Ausstellerausweis-Token über. <br> Falls Sie noch weitere Tokens benötigen, melden Sie sich gerne bei der Messeleitung. Per Mail: <a href='mailto: dillingen@jws.de>'>dillingen@jws.de</a> oder Telefon: 09074 / 92207-0 ";
 };
 ?>
-
-
 </div>
 
+<!--Submit call -->
 <?php
 if (isset($post["submit"])) {
     $passLink = PassCreator::submit($apiKey, $post, $passUID);

@@ -17,6 +17,7 @@
         <fields name="params">
             <fieldset name="basic">
                 <field name="apiKey" type="text" default="" label="API-Key" description="API-Key"></field>
+                 <field name="passUID" type="text" default="" label="PassUID" description="API-Key"></field>
                 <field name="starttext" type="editor" filter="raw" default="" label="Starttext" description="Angezeiger Text vor dem Submit"></field>
                 <field name="endtext" type="editor" filter="raw" default="" label="Angezeiger Text vor dem Submit" description="Endtext"></field>
                
