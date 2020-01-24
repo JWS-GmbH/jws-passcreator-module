@@ -24,7 +24,6 @@ $apiKey =  $params->get('apiKey');
 $passUID =  $params->get('passUID');
 
 $tokens = PassCreator::getTokens();
-$passFields = PassCreator::getPassFields($apiKey, $passUID);
 
 
 

@@ -25,31 +25,16 @@ defined('_JEXEC') or die;
 
         <form class="form-horizontal" name="submit" method="REQUEST" enctype="multipart/form-data">
             <div class="control-group required">
-                <label class="control-label">Aussteller oder Firma:</label>
-                <div class="controls">
-                    <input type="text" required name="5dc29d162176d1.51964649" value="" />
-                </div>
-                <label class="control-label">Vor- und Nachname:</label>
-                <div class="controls">
-                    <input type="text" required name="5dc29da1360391.66363962" value="" />
-                </div>
-                <label class="control-label">PLZ und Wohnort:</label>
-                <div class="controls">
-                    <input type="text" required name="5dc29da1360484.78958470" value="" />
-                </div>
-                <label class="control-label">Anschrift:</label>
-                <div class="controls">
-                    <input type="text" required name="5dcd0aec164964.03925150" value="" />
-                </div>
-                <label class="control-label">Geburtsdatum:</label>
-                <div class="controls">
-                    <input type="text" required name="5dcd0aec1649f5.39810123" value="" />
-                </div>
+               <?php
+                    echo PassCreator::generatePassForm($apiKey, $passUID);
+               ?>
+
             </div>
             <button class="btn" type="submit" name="submit" value="Submit" style="background-color: #3d8835; color: white; font-size: 15px; height: 30px; margin-left: 85px;">Submit</button>
         </form>
 
-    <?php
+        <?php
+    
 } else {
     echo "Sie haben leider keinen Ausstellerausweis-Token über. <br> Falls Sie noch weitere Tokens benötigen, melden Sie sich gerne bei der Messeleitung. Per Mail: <a href='mailto: dillingen@jws.de>'>dillingen@jws.de</a> oder Telefon: 09074 / 92207-0 ";
 };

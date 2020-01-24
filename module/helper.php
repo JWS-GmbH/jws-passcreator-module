@@ -14,8 +14,7 @@ class PassCreator
                 '5dcd0aec164964.03925150' => $array['5dcd0aec164964_03925150'],
                 '5dcd0aec1649f5.39810123' => $array['5dcd0aec1649f5_39810123'],
             );
-            $passLink = PassCreator
-        ::createPass($apiKey, $passUID, $input);
+            $passLink = PassCreator::createPass($apiKey, $passUID, $input);
             
         return $passLink;
     }
@@ -50,7 +49,7 @@ class PassCreator
         return $result;
     }
 
-    public static function getPassUID($apiKey){
+    /* public static function getPassUID($apiKey){
         $opts = array( 'http' => array(
                 'method'  => 'GET',
                 'header'  => 'Authorization: '.$apiKey .'',
@@ -60,7 +59,7 @@ class PassCreator
         $json = file_get_contents('https://app.passcreator.com/api/pass-template', false, $context);
         //nimm den ersten identifier aus der Liste
         return json_decode($json, true)[2]['identifier'];
-    }
+    } */
 
     public static function getPassFields($apiKey, $passUID){
         $opts = array( 'http' => array(
@@ -70,8 +69,34 @@ class PassCreator
         );
         $context = stream_context_create($opts);
         $json = file_get_contents('https://app.passcreator.com/api/pass-template/'.$passUID.'?zapierStyle=true', false, $context);
-        return $json;
-        //return json_decode($json, true)[0]['identifier'];
+        
+        return json_decode($json, true);
+    }
+
+    public static function generatePassForm($apiKey, $passUID){
+
+        $array = PassCreator::getPassFields($apiKey, $passUID);
+        
+        $htmlString = "";
+
+        foreach ($array as $id){
+            if( $id['key'] === 'userProvidedId'){
+                $htmlString .= "";
+            }  else if ( $id['key'] === 'urlToThumbnail') {
+                $htmlString .= 
+            "<label class='control-label'>". $id['key']. ":</label>
+            <div class='controls'>
+                <input type='text' required name=" . $id['key'] . " value='' />
+            </div>";
+            } else {
+            $htmlString .= 
+            "<label class='control-label'>". $id['label']. ":</label>
+            <div class='controls'>
+                <input type='text' required name=" . $id['key'] . " value='' />
+            </div>";
+            };
+        }
+        return $htmlString;
     }
 
     public static function createPass($apiKey, $passUID, $input){
