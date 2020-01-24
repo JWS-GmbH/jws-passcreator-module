@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1.0" client="site" method="upgrade">
+    <name>Ausstellerausweis-Generator</name>
+    <author>Markus Schranz</author>
+    <version>1.0.0</version>
+    <description>Ein Modul für Aussteller zur Erstellung von Ausstellerausweisen.</description>
+    <files>
+        <filename>mod_aussteller_passcreator.xml</filename>
+        <filename module="mod_aussteller_passcreator">mod_aussteller_passcreator.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="apiKey" type="text" default="" label="API-Key" description="API-Key"></field>
+                <field name="starttext" type="editor" filter="raw" default="" label="Starttext" description="Angezeiger Text vor dem Submit"></field>
+                <field name="endtext" type="editor" filter="raw" default="" label="Angezeiger Text vor dem Submit" description="Endtext"></field>
+               
+            </fieldset>
+        </fields>
+    </config>
+    
+</extension>
