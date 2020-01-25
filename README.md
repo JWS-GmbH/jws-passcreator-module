@@ -21,7 +21,7 @@ PLG_USER_PROFILE_FIELD_TOKEN_LABEL="..."
 PLG_USER_PROFILE_FIELD_TOKEN_DESC="..."
 
 ## 4. upload-module
-After all you have to zip `/modules` and install it in joomla. 
+After all you have to zip [`/modules`](https://github.com/maadc/jws-passcreator-module/tree/master/module) and install it in joomla. 
 Fill in all required data and you can display it on the blank page.  
 
 Voilà
