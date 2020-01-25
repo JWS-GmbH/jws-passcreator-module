@@ -19,12 +19,13 @@ class PassCreator
         return $passLink;
     }
 
-    public static function getTokens(){
+    public static function getTokens($databasePrefix){
         $id = JFactory::getUser()->id;
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
             ->select($db->quoteName('profile_value'))
-            ->from($db->quoteName('jwswi_user_profiles'))
+            //database-prefix
+            ->from($db->quoteName($databasePrefix . 'user_profiles'))
             ->where($db->quoteName('user_id') . ' LIKE ' . $db->quote($id));
 
         $db->setQuery($query);
@@ -34,12 +35,13 @@ class PassCreator
         return $result;
     }
 
-    public static function reduceTokens($tokens){
+    public static function reduceTokens($databasePrefix, $tokens){
         $id = JFactory::getUser()->id;
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
 
-        $query->update($db->quoteName('jwswi_user_profiles'))
+        //database-prefix
+        $query->update($db->quoteName($databasePrefix . 'user_profiles'))
         ->set($db->quoteName('profile_value') . ' = ' . $db->quote($tokens -1))
         -> where( $db->quoteName('user_id') . ' LIKE ' . $db->quote($id));
         

@@ -66,7 +66,7 @@ if (isset($post["submit"])) {
     </script>
     
     <?php 
-    PassCreator::reduceTokens($tokens);
+    PassCreator::reduceTokens($databasePrefix, $tokens);
     echo 'Alternativ auch der Link zu Ihren Pass: ' .'<a href=' . $passLink . '>' . $passLink . '</a>';
     echo "<br>";
     echo "<a href='ausstellerausweis'>Falls Sie gleich noch einen Wallet-Pass erstellen wollen, klicken Sie hier.</a>";

@@ -24,11 +24,9 @@ $apiKey =  $params->get('apiKey');
 $passUID =  $params->get('passUID');
 $noToken =  $params->get('noToken');
 $errorText =  $params->get('errorText');
+$databasePrefix = $params->get('databasePrefix');
 
-$tokens = PassCreator::getTokens();
-
-
-
+$tokens = PassCreator::getTokens($databasePrefix);
 $input = new JInput;
 $post = $input->getArray($_POST);
 

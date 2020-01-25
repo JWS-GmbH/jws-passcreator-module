@@ -16,6 +16,7 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
+                <field name="databasePrefix" type="text" default="" label="DatabasePrefix" description="Datenbank - Präfix. Gefunden unter Konfiguration > Server > Datenbank"></field>
                 <field name="apiKey" type="text" default="" label="API-Key" description="API-Key"></field>
                 <field name="passUID" type="text" default="" label="PassUID" description="Die passUID kann mit einem API-Call herausgefunden werden. Postman ist ein gutes Programm dafür."></field>
                 <field name="starttext" type="editor" filter="raw" default="" label="Starttext" description="Angezeiger Text vor dem Submit"></field>
