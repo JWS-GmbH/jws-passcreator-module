@@ -32,6 +32,26 @@ defined('_JEXEC') or die;
 <?php
 if (isset($post["submit"])) {
     $passLink = PassCreator::submit($apiKey, $post, $passUID);
+
+    if ($passLink === null){
+
+        ?>
+        <script type="text/javascript">
+        //Texteinblendung $errorText
+        function submit() {
+            let modul = document.getElementById("modul")
+            modul.innerHTML = ` <?php echo $errorText ?> `
+        }
+        submit();
+        
+        //Cleare URL-Parameter
+        window.history.replaceState( {} , "", window.location.origin + window.location.pathname);
+    </script>
+
+    <?php
+
+    } else {
+
     ?>
     <script type="text/javascript">
         //Texteinblendung $endtext
@@ -41,8 +61,7 @@ if (isset($post["submit"])) {
         }
         submit();
         
-        //Cleare Parameter after URL
-        //Setze die neue URL zusammen, aus: dem Hauptteil der URl + URL-Pfad
+        //Cleare URL-Parameter
         window.history.replaceState( {} , "", window.location.origin + window.location.pathname);
     </script>
     
@@ -50,26 +69,10 @@ if (isset($post["submit"])) {
     PassCreator::reduceTokens($tokens);
     echo 'Alternativ auch der Link zu Ihren Pass: ' .'<a href=' . $passLink . '>' . $passLink . '</a>';
     echo "<br>";
-    echo "<a href='ausstellerausweis'>Falls Sie gleich noch einen Ausstellerausweis erstellen wollen, klicken Sie hier.</a>";
+    echo "<a href='ausstellerausweis'>Falls Sie gleich noch einen Wallet-Pass erstellen wollen, klicken Sie hier.</a>";
     echo "<br>";
     echo "<iframe style='margin-top: 20px;width: 100%; height: 500px' src='".$passLink."'</iframe>";
     
-    
+    }
 }
-
-//echo json_encode($submit);
-
-//echo json_encode($post);
-
-// echo 'PassUID '.$passUID;
-// echo '<br>';
-//echo 'PassFields '.$passFields;
-// echo '<br>';
-/*
-<p>Vielen Dank, dass Sie einen digitalen Ausstellerausweis gewählt haben!</p>
-            <p><b>Jetzt haben Sie zwei Möglichkeiten. </b>Fügen Sie den Ausweis Ihrem Handy-Wallet hinzu, oder drucken Sie Ihn aus.&nbsp;</p>
-            <p>Auf dem Ausweis befindet sich ein QR-Code, welchen Sie beim Eintreten vorzeigen müssen. Dieser wird von einem Mitarbeiter abgescannt und entwertet. 
-            &nbsp;Nach einem erfolgreichen Messetag werden alle Ausstellerausweise wieder für den nächsten Tag freigeschaltet und Sie können die selbe Karte vorzeigen.</p>
-*/
-
 ?>

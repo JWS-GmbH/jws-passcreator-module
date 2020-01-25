@@ -84,11 +84,14 @@ class PassCreator
             if( $id['key'] === 'userProvidedId'){
                 $htmlString .= "";
             }  else {
-            $htmlString .= 
-            "<label class='control-label'>". $id['label']. ":</label>
-            <div class='controls'>
-                <input type='text' required name=" . $id['key'] . " value='' />
-            </div>";
+            $htmlString .= "
+            <div class='control-group'>
+                <label class='control-label'>". $id['label']. ":</label>
+                <div class='controls'>
+                    <input type='text' required name=" . $id['key'] . " value='' />
+                </div>
+            </div>
+            ";
             };
         }
         return $htmlString;

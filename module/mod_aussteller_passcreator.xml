@@ -20,11 +20,8 @@
                 <field name="passUID" type="text" default="" label="PassUID" description="API-Key"></field>
                 <field name="starttext" type="editor" filter="raw" default="" label="Starttext" description="Angezeiger Text vor dem Submit"></field>
                 <field name="endtext" type="editor" filter="raw" default="" label="Angezeiger Text vor dem Submit" description="Endtext"></field>
-                <field name="noToken" type="editor" filter="raw" default="
-                Sie haben leider keinen Ausstellerausweis-Token über. <br> Falls Sie noch weitere Tokens benötigen, melden Sie sich gerne bei der Messeleitung. Per Mail: 
-                <a href='mailto: dillingen@jws.de>'>dillingen@jws.de</a> oder Telefon: 09074 / 92207-0"
-                label="Angezeiger Text, wenn keine Tokens übrig sind" description="noToken"></field>
-               
+                <field name="noToken" type="editor" filter="raw" default="" label="Angezeiger Text, wenn keine Tokens übrig sind" description="noToken"></field>
+                <field name="errorText" type="editor" filter="raw" default="" label="Angezeiger Text, falls beim Erstellen etwas schief gelaufen ist" description="errorText"></field>
             </fieldset>
         </fields>
     </config>
