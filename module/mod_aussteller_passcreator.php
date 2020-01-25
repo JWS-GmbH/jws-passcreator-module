@@ -22,6 +22,7 @@ $starttext =  $params->get('starttext');
 $endtext =  $params->get('endtext');
 $apiKey =  $params->get('apiKey');
 $passUID =  $params->get('passUID');
+$noToken =  $params->get('noToken');
 
 $tokens = PassCreator::getTokens();
 

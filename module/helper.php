@@ -75,20 +75,15 @@ class PassCreator
 
     public static function generatePassForm($apiKey, $passUID){
 
+        //get all passfields
         $array = PassCreator::getPassFields($apiKey, $passUID);
-        
         $htmlString = "";
 
+        //generate htmlString with html-form
         foreach ($array as $id){
             if( $id['key'] === 'userProvidedId'){
                 $htmlString .= "";
-            }  else if ( $id['key'] === 'urlToThumbnail') {
-                $htmlString .= 
-            "<label class='control-label'>". $id['key']. ":</label>
-            <div class='controls'>
-                <input type='text' required name=" . $id['key'] . " value='' />
-            </div>";
-            } else {
+            }  else {
             $htmlString .= 
             "<label class='control-label'>". $id['label']. ":</label>
             <div class='controls'>

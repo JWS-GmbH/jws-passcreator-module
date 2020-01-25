@@ -10,35 +10,22 @@ defined('_JEXEC') or die;
         echo "<h3> Ihr aktuelles Guthaben: " . $tokens . '</h3>';
         echo "<div>". $starttext ."</div>";
         ?>
-        <!--         
-        <p>Falls Sie noch weitere Tokens benötigen, melden Sie sich gerne bei der Messeleitung. 
-        Per Mail: <a href="mailto: dillingen@jws.de>">dillingen@jws.de</a> oder Telefon: 09074 / 92207-0 </p>
-        <p>Bitte erstellen Sie auf dieser Seite Ihren Ausstellerausweis.
-        <b>Sie können so viele Ausweise erstellen, wie Ihnen aufgrund Ihrer Standgröße zustehen. </b></p>
-        <p><b>Nach der Erstellung haben Sie zwei Möglichkeiten: </b><br>
-            Fügen Sie den Ausweis Ihrem Handy-Wallet hinzu, oder drucken Sie Ihn aus.</p>
-        <p>Auf dem Ausweis befindet sich ein QR-Code, welchen Sie beim Eintreten vorzeigen müssen. 
-        Dieser wird von einem Mitarbeiter abgescannt und entwertet. &nbsp;
-        Nach einem erfolgreichen Messetag werden alle Ausstellerausweise wieder für den nächsten Tag freigeschaltet
-         und Sie können die selbe Karte vorzeigen.</p>
-         -->
 
         <form class="form-horizontal" name="submit" method="REQUEST" enctype="multipart/form-data">
             <div class="control-group required">
                <?php
                     echo PassCreator::generatePassForm($apiKey, $passUID);
                ?>
-
             </div>
             <button class="btn" type="submit" name="submit" value="Submit" style="background-color: #3d8835; color: white; font-size: 15px; height: 30px; margin-left: 85px;">Submit</button>
         </form>
 
         <?php
     
-} else {
-    echo "Sie haben leider keinen Ausstellerausweis-Token über. <br> Falls Sie noch weitere Tokens benötigen, melden Sie sich gerne bei der Messeleitung. Per Mail: <a href='mailto: dillingen@jws.de>'>dillingen@jws.de</a> oder Telefon: 09074 / 92207-0 ";
-};
-?>
+        } else {
+            echo $noToken . "";
+        };
+        ?>
 </div>
 
 <!--Submit call -->
@@ -47,6 +34,7 @@ if (isset($post["submit"])) {
     $passLink = PassCreator::submit($apiKey, $post, $passUID);
     ?>
     <script type="text/javascript">
+        //Texteinblendung $endtext
         function submit() {
             let modul = document.getElementById("modul")
             modul.innerHTML = ` <?php echo $endtext ?> `
