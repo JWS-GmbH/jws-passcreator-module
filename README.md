@@ -10,18 +10,18 @@ After the installation you generate a new joomla-page with this blank component.
 ## 2. joomla profiles plugin
 
 Make sure you activated the plugin "user - profile". 
-I extendet the joomla profiles plugin by the field "tokens". The plugin-date can be fount in: root > plugins > user > profile.  
-In /profiles.xml you can replace the <config> tag. profiles/profiles.xml can you replace completly.
+I extendet the joomla profiles plugin by the field "tokens". The plugin-date can be fount in: `root > plugins > user > profile`.  
+In `/profiles.xml` you can replace the `<config>` tag. `profiles/profiles.xml` can you replace completly.
   
 ## 3. language-files
 
-There are language-files in administator > language > (lang.) > plg_user_profile.ini
+There are language-files in `administator > language > (lang.) > plg_user_profile.ini`
 Add these lines:  
-PLG_USER_PROFILE_FIELD_TOKEN_LABEL="..." 
+PLG_USER_PROFILE_FIELD_TOKEN_LABEL="..."  
 PLG_USER_PROFILE_FIELD_TOKEN_DESC="..."
 
 ## 4. upload-module
-After all you have to zip /modules and install it in joomla. 
+After all you have to zip `/modules` and install it in joomla. 
 Fill in all required data and you can display it on the blank page.  
 
 Voilà
