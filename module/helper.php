@@ -7,15 +7,17 @@ class PassCreator
     
     //call in default.php
     public static function submit($apiKey, $array, $passUID) {
-            $input = array(
-                '5dc29d162176d1.51964649' => $array['5dc29d162176d1_51964649'],
-                '5dc29da1360391.66363962' => $array['5dc29da1360391_66363962'],
-                '5dc29da1360484.78958470' => $array["5dc29da1360484_78958470"],
-                '5dcd0aec164964.03925150' => $array['5dcd0aec164964_03925150'],
-                '5dcd0aec1649f5.39810123' => $array['5dcd0aec1649f5_39810123'],
-            );
-            $passLink = PassCreator::createPass($apiKey, $passUID, $input);
+        $fields = PassCreator::getPassFields($apiKey, $passUID);
+        $input = array();
             
+        //add to the $input-array:
+        //key: every passfield, value: the submited value for each passfield
+        //$array contains underscores instead of dotts. ->string replace
+        foreach($fields as $i){
+            $passfield = $i['key'];
+            $input[$passfield] = $array[str_replace('.', '_', $passfield)];
+        }
+        $passLink = PassCreator::createPass($apiKey, $passUID, $input);
         return $passLink;
     }
 
