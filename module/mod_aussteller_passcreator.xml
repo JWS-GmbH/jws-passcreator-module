@@ -24,7 +24,7 @@
                     <option value="profile.tagesausweis-tokens">Tagesausweis</option>
                     <option value="no-token">Ohne Tokenabfrage</option>
                 </field>
-                <field name="integrationScript" type="text" default="" label="Integration-Skript" description="Um den Pass nach der Erstellung anzeigen zu können, wird dieses Skript eingebunden. Es muss bei PassCreator für die passende Pass-Vorlage generiert werden."></field>
+                <field name="integrationScript" type="text" filter="raw" default="" label="Integration-Skript" description="Um den Pass nach der Erstellung anzeigen zu können, wird dieses Skript eingebunden. Es muss bei PassCreator für die passende Pass-Vorlage generiert werden."></field>
                 <field name="starttext" type="editor" filter="raw" default="" label="Starttext" description="Angezeiger Text vor dem Submit"></field>
                 <field name="endtext" type="editor" filter="raw" default="" label="Angezeiger Text nach dem Submit" description="Angezeiger Text nach dem Submit."></field>
                 <field name="noToken" type="editor" filter="raw" default="" label="Angezeiger Text, wenn keine Tokens übrig sind." description="Tokens können in den Benutzereinstellungen wieder aufgefüllt werden."></field>
