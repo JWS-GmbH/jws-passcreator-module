@@ -45,8 +45,8 @@ defined('_JEXEC') or die;
 <!--Submit call -->
 <?php
 if (isset($post["submit"])) {
-    $passLink = PassCreator::submit($apiKey, $post, $passUID);
-
+    $passObject = PassCreator::submit($apiKey, $post, $passUID);
+    $passLink = $passObject->linkToPassPage;
     if ($passLink === null){
         ?>
         
@@ -86,8 +86,8 @@ if (isset($post["submit"])) {
     echo 'Alternativ auch der Link zu Ihren Pass: ' .'<a href=' . $passLink . '>' . $passLink . '</a>';
     echo "<br>";
     echo "<a href='ausstellerausweis'>Falls Sie gleich noch einen Wallet-Pass erstellen wollen, klicken Sie hier.</a>";
-    echo "<br>";
-    echo "<iframe style='margin-top: 20px;width: 100%; height: 500px' src='".$passLink."'</iframe>";
+    echo "<br><br>";
+    echo "" . PassCreator::integrationScript($integrationScript, $passObject->identifier);
     
     }
 }

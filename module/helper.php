@@ -4,23 +4,6 @@ defined('_JEXEC') or die;
 
 class PassCreator
 {
-    
-    //call in default.php
-    public static function submit($apiKey, $array, $passUID) {
-        $fields = PassCreator::getPassFields($apiKey, $passUID);
-        $input = array();
-            
-        //add to the $input-array:
-        //key: every passfield, value: the submited value for each passfield
-        //$array contains underscores instead of dotts. ->string replace
-        foreach($fields as $i){
-            $passfield = $i['key'];
-            $input[$passfield] = $array[str_replace('.', '_', $passfield)];
-        }
-        $passLink = PassCreator::createPass($apiKey, $passUID, $input);
-        return $passLink;
-    }
-
     public static function getTokens($databasePrefix, $tokenfield){
         $id = JFactory::getUser()->id;
         $db = JFactory::getDbo();
@@ -55,17 +38,9 @@ class PassCreator
         return $result;
     }
 
-    /* public static function getPassUID($apiKey){
-        $opts = array( 'http' => array(
-                'method'  => 'GET',
-                'header'  => 'Authorization: '.$apiKey .'',
-            )
-        );
-        $context = stream_context_create($opts);
-        $json = file_get_contents('https://app.passcreator.com/api/pass-template', false, $context);
-        //nimm den ersten identifier aus der Liste
-        return json_decode($json, true)[2]['identifier'];
-    } */
+    public static function integrationScript($scriptString, $passID){
+        return str_replace('pass-id', $passID, $scriptString);
+    } 
 
     public static function getPassFields($apiKey, $passUID){
         $opts = array( 'http' => array(
@@ -103,6 +78,22 @@ class PassCreator
         return $htmlString;
     }
 
+    //call in default.php
+    public static function submit($apiKey, $array, $passUID) {
+        $fields = PassCreator::getPassFields($apiKey, $passUID);
+        $input = array();
+            
+        //add to the $input-array:
+        //key: every passfield, value: the submited value for each passfield
+        //$array contains underscores instead of dotts. ->string replace
+        foreach($fields as $i){
+            $passfield = $i['key'];
+            $input[$passfield] = $array[str_replace('.', '_', $passfield)];
+        }
+        $passObejct = PassCreator::createPass($apiKey, $passUID, $input);
+        return $passObejct;
+    }
+
     public static function createPass($apiKey, $passUID, $input){
         
         $opts = array( 'http' => array(
@@ -113,7 +104,7 @@ class PassCreator
         );
         $context = stream_context_create($opts);
         $json = file_get_contents('https://app.passcreator.com/api/pass?passtemplate='.$passUID.'&zapierStyle=true', false, $context);
-        $passURL = json_decode($json)->linkToPassPage;
-        return $passURL;
+        //$passURL = json_decode($json)->linkToPassPage;
+        return json_decode($json);
     }
 }

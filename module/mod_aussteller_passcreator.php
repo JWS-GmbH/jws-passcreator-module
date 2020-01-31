@@ -23,6 +23,7 @@ $endtext =  $params->get('endtext');
 $apiKey =  $params->get('apiKey');
 $passUID =  $params->get('passUID');
 $tokenField = $params->get('tokenfield-option');
+$integrationScript = $params->get('integrationScript');
 $noToken =  $params->get('noToken');
 $errorText =  $params->get('errorText');
 $databasePrefix = $params->get('databasePrefix');
