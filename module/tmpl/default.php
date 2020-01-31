@@ -6,7 +6,22 @@ defined('_JEXEC') or die;
 <div id="modul">
 
     <?php
-    if ($tokens >= 1) {
+
+    if ($tokenField === 'no-token'){
+        echo "<div>". $starttext ."</div>";
+        ?>
+
+        <form class="form-horizontal" name="submit" method="REQUEST" enctype="multipart/form-data">
+            <div class="control-group required">
+               <?php
+                    echo PassCreator::generatePassForm($apiKey, $passUID);
+               ?>
+            </div>
+            <button class="btn" type="submit" name="submit" value="Submit" style="background-color: #3d8835; color: white; font-size: 15px; height: 30px; margin-left: 85px;">Submit</button>
+        </form>
+
+        <?php
+    } else if ($tokens >= 1) {
         echo "<h3> Ihr aktuelles Guthaben: " . $tokens . '</h3>';
         echo "<div>". $starttext ."</div>";
         ?>
@@ -21,7 +36,6 @@ defined('_JEXEC') or die;
         </form>
 
         <?php
-    
         } else {
             echo $noToken . "";
         };
@@ -34,8 +48,8 @@ if (isset($post["submit"])) {
     $passLink = PassCreator::submit($apiKey, $post, $passUID);
 
     if ($passLink === null){
-
         ?>
+        
         <script type="text/javascript">
         //Texteinblendung $errorText
         function submit() {
@@ -66,7 +80,9 @@ if (isset($post["submit"])) {
     </script>
     
     <?php 
-    PassCreator::reduceTokens($databasePrefix, $tokens, $tokenField);
+    if ($tokenField != 'no-token'){
+        PassCreator::reduceTokens($databasePrefix, $tokens, $tokenField);
+    }
     echo 'Alternativ auch der Link zu Ihren Pass: ' .'<a href=' . $passLink . '>' . $passLink . '</a>';
     echo "<br>";
     echo "<a href='ausstellerausweis'>Falls Sie gleich noch einen Wallet-Pass erstellen wollen, klicken Sie hier.</a>";
