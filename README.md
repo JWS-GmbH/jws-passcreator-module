@@ -24,7 +24,7 @@ PLG_USER_PROFILE_FIELD_TOKEN_DESC="..."
 After all you have to zip [`/modules`](https://github.com/maadc/jws-passcreator-module/tree/master/module) and install it in joomla. 
 Fill in all required data and you can display it on the blank page.  
 
-## 4. fill in all the requied data
+## 5. fill in all the requied data
 You will need:
 * database-Prefix
 * API-Key
