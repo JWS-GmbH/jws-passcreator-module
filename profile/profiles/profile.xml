@@ -6,15 +6,32 @@
 			label="PLG_USER_PROFILE_SLIDER_LABEL"
 		>
 			<field
-				name="tokens"
+				name="ausstellerausweis-tokens"
 				type="text"
-				label="PLG_USER_PROFILE_FIELD_TOKEN_LABEL"
-				description="PLG_USER_PROFILE_FIELD_TOKEN_DESC"
-				id="tokens"
+				label="PLG_USER_PROFILE_FIELD_AUSSTELLERTOKEN_LABEL"
+				description="PLG_USER_PROFILE_FIELD_AUSSTELLERTOKEN_DESC"
+				id="ausstellerausweis-tokens"
 				filter="integer"
 				size="1"
 			/>
-			
+			<field
+				name="tagesausweis-tokens"
+				type="text"
+				label="PLG_USER_PROFILE_FIELD_TAGESTOKEN_LABEL"
+				description="PLG_USER_PROFILE_FIELD_TAGESTOKEN_DESC"
+				id="tagesausweis-tokens"
+				filter="integer"
+				size="1"
+			/>
 		</fieldset>
 	</fields>
 </form>
+
+<!--
+	Sprachvariablen:
+	PLG_USER_PROFILE_FIELD_AUSSTELLERTOKEN_LABEL="Ausstellerausweis-Tokens"
+	PLG_USER_PROFILE_FIELD_AUSSTELLERTOKEN_DESC="Anzahl an Tokens für Ausstellerausweise; Datenbank-Feldname: profile.ausstellerausweis-tokens"
+
+	PLG_USER_PROFILE_FIELD_TAGESTOKEN_LABEL="Tagesausweis-Tokens"
+	PLG_USER_PROFILE_FIELD_TAGESTOKEN_DESC="Anzahl an Tokens für Tagesausweise; Datenbank-Feldname: profile.tagesausweis-tokens"
+-->

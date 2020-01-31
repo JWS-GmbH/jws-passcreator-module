@@ -19,14 +19,15 @@ class PassCreator
         return $passLink;
     }
 
-    public static function getTokens($databasePrefix){
+    public static function getTokens($databasePrefix, $tokenfield){
         $id = JFactory::getUser()->id;
         $db = JFactory::getDbo();
         $query = $db->getQuery(true)
             ->select($db->quoteName('profile_value'))
             //database-prefix
             ->from($db->quoteName($databasePrefix . 'user_profiles'))
-            ->where($db->quoteName('user_id') . ' LIKE ' . $db->quote($id));
+            ->where($db->quoteName('user_id') . ' LIKE ' . $db->quote($id))
+            ->where($db->quoteName('profile_key') . ' LIKE ' . $db->quote($tokenfield));
 
         $db->setQuery($query);
         // Load the row.
@@ -35,7 +36,7 @@ class PassCreator
         return $result;
     }
 
-    public static function reduceTokens($databasePrefix, $tokens){
+    public static function reduceTokens($databasePrefix, $tokens, $tokenfield){
         $id = JFactory::getUser()->id;
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
@@ -43,7 +44,8 @@ class PassCreator
         //database-prefix
         $query->update($db->quoteName($databasePrefix . 'user_profiles'))
         ->set($db->quoteName('profile_value') . ' = ' . $db->quote($tokens -1))
-        -> where( $db->quoteName('user_id') . ' LIKE ' . $db->quote($id));
+        ->where( $db->quoteName('user_id') . ' LIKE ' . $db->quote($id))
+        ->where($db->quoteName('profile_key') . ' LIKE ' . $db->quote($tokenfield));
         
         $db->setQuery($query);
         $result = $db->execute();

@@ -27,18 +27,6 @@
 					label="PLG_USER_PROFILE_FIELD_NAME_REGISTER_REQUIRE_USER"
 					class="text"
 				/>
-				<field
-					name="register-require-tokens"
-					type="integer"
-					label="PLG_USER_PROFILE_FIELD_TOKEN_LABEL"
-					description="PLG_USER_PROFILE_FIELD_TOKEN_DESC"
-					default="1"
-					filter="integer"
-					>
-					<option	value="2">JOPTION_REQUIRED</option>
-					<option value="1">JOPTION_OPTIONAL</option>
-					<option	value="0">JDISABLED</option>
-				</field>
 			</fieldset>
 		</fields>
 	</config>

@@ -22,11 +22,12 @@ $starttext =  $params->get('starttext');
 $endtext =  $params->get('endtext');
 $apiKey =  $params->get('apiKey');
 $passUID =  $params->get('passUID');
+$tokenField = $params->get('tokenfield-option');
 $noToken =  $params->get('noToken');
 $errorText =  $params->get('errorText');
 $databasePrefix = $params->get('databasePrefix');
 
-$tokens = PassCreator::getTokens($databasePrefix);
+$tokens = PassCreator::getTokens($databasePrefix, $tokenField);
 $input = new JInput;
 $post = $input->getArray($_POST);
 

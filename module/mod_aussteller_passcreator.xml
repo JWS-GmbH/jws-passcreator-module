@@ -19,6 +19,10 @@
                 <field name="databasePrefix" type="text" default="" label="DatabasePrefix" description="Datenbank - Präfix. Gefunden unter Konfiguration > Server > Datenbank"></field>
                 <field name="apiKey" type="text" default="" label="API-Key" description="API-Key"></field>
                 <field name="passUID" type="text" default="" label="PassUID" description="Die passUID kann mit einem API-Call herausgefunden werden. Postman ist ein gutes Programm dafür."></field>
+                <field name="tokenfield-option" type="radio" default="0" label="Auswahl zwischen den Ausweis-Arten" description="Welcher Pass wird mit dem Formular generiert?">
+                    <option value="profile.ausstellerausweis-tokens">Ausstellerausweis</option>
+                    <option value="profile.tagesausweis-tokens">Tagesausweis</option>
+                </field>
                 <field name="starttext" type="editor" filter="raw" default="" label="Starttext" description="Angezeiger Text vor dem Submit"></field>
                 <field name="endtext" type="editor" filter="raw" default="" label="Angezeiger Text nach dem Submit" description="Angezeiger Text nach dem Submit."></field>
                 <field name="noToken" type="editor" filter="raw" default="" label="Angezeiger Text, wenn keine Tokens übrig sind." description="Tokens können in den Benutzereinstellungen wieder aufgefüllt werden."></field>
