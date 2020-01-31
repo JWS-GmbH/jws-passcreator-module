@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1.0" client="site" method="upgrade">
-    <name>Ausstellerausweis-Generator</name>
+    <name>Pass-Generator</name>
     <author>Markus Schranz</author>
     <version>1.0.0</version>
     <description>Ein Modul für Aussteller zur Erstellung von Ausstellerausweisen.</description>
