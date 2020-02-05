@@ -20,6 +20,9 @@ class PassCreator
 
         return $result;
     }
+    public static function getName(){
+        return JFactory::getUser()->name;
+    }
 
     public static function reduceTokens($databasePrefix, $tokens, $tokenfield){
         $id = JFactory::getUser()->id;
@@ -64,7 +67,16 @@ class PassCreator
         foreach ($array as $id){
             if( $id['key'] === 'userProvidedId'){
                 $htmlString .= "";
-            }  else {
+            } else if($id['label'] === 'Aussteller/Firma') {
+                $htmlString .= "
+            <div class='control-group'>
+                <label class='control-label'>". $id['label']. ":</label>
+                <div class='controls'>
+                    <input type='text' required name=" . $id['key'] . " value='". PassCreator::getName() ."' />
+                </div>
+            </div>
+            ";
+            } else {
             $htmlString .= "
             <div class='control-group'>
                 <label class='control-label'>". $id['label']. ":</label>
