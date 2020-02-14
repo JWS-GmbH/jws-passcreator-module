@@ -9,7 +9,6 @@ defined('_JEXEC') or die;
 
     if ($tokenField === 'no-token'){
         echo "<div>". $starttext ."</div>";
-        echo "" . PassCreator::getName();
         ?>
 
         <form class="form-horizontal" name="submit" method="REQUEST" enctype="multipart/form-data">
